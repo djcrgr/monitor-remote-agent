@@ -9,6 +9,15 @@
       "filter": null,
       "encoding": "Windows-1251",
       "dead time": "24h"
+    },
+    {
+      "section": "load_file_dates",
+      "paths": [
+        "/Users/djcrgr/go"
+      ],
+      "fields": {
+        "type": "time.csv"
+      }
     }
   ],
   "1c servers": [

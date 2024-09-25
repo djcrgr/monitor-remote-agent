@@ -22,13 +22,8 @@ package com.monitor.agent.server;
 */
 
 import ch.qos.logback.classic.Level;
-import com.monitor.agent.server.handler.RootHandler;
-import com.monitor.agent.server.handler.LogRecordsHandler;
-import com.monitor.agent.server.handler.NotFoundHandler;
-import com.monitor.agent.server.handler.AckHandler;
+import com.monitor.agent.server.handler.*;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.monitor.agent.server.handler.ConfigHandler;
-import com.monitor.agent.server.handler.WatchMapHandler;
 import fi.iki.elonen.NanoHTTPD;
 import fi.iki.elonen.router.RouterNanoHTTPD;
 
@@ -37,16 +32,7 @@ import java.io.IOException;
 import com.monitor.agent.server.config.ConfigurationManager;
 import com.monitor.agent.server.config.FilesConfig;
 import com.monitor.agent.server.config.OneCServerConfig;
-import com.monitor.agent.server.handler.AccessibilityHandler;
-import com.monitor.agent.server.handler.ContinueServerHandler;
-import com.monitor.agent.server.handler.ExecQueryHandler;
-import com.monitor.agent.server.handler.OSProcessInfoHandler;
-import com.monitor.agent.server.handler.TJLogConfigHandler;
-import com.monitor.agent.server.handler.OneCSessionsInfoHandler;
-import com.monitor.agent.server.handler.PauseServerHandler;
-import com.monitor.agent.server.handler.PingHandler;
-import com.monitor.agent.server.handler.StopServerHandler;
-import com.monitor.agent.server.handler.VersionHandler;
+
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
@@ -158,6 +144,7 @@ public class Server {
         httpd.addRoute("/tjlogconfig", TJLogConfigHandler.class, this);
         httpd.addRoute("/execquery", ExecQueryHandler.class, this);
         httpd.addRoute("/osprocinfo", OSProcessInfoHandler.class, this);
+        httpd.addRoute("/dumpsinfo", DumpsInfoHandler.class, this);
         httpd.addRoute(stopRoute, StopServerHandler.class, this);
         httpd.setNotFoundHandler(NotFoundHandler.class);
 
